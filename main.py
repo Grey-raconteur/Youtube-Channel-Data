@@ -12,7 +12,6 @@ for video in response['items']:
   if video['id']['kind'] == "youtube#video":
     id = video['id']['videoId']
     title = video['snippet']['title']
-    title = str(title).replace("&amp;","")
     date = video['snippet']['publishTime']
     date = str(date).split("T")[0]
     url_video_stats = "https://www.googleapis.com/youtube/v3/videos?id="+id+"&part=statistics&key="+API_KEY
