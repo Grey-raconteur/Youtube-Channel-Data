@@ -13,5 +13,7 @@ How to get youtube API -
 
 Once you get your API key, just replace that part in the code and get channel Id of your favorite channel and run the code.
 
-It will print out the date, title, view count, like count and comment count of every video on that channel
+It will print out the date, title, view count, like count and comment count of every video on that channel in a tabular format (using Pandas).
+
+The data is sorted in descending order of views.
 
