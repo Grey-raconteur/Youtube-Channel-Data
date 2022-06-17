@@ -3,7 +3,7 @@ import pandas as pd
 
 rom requests.exceptions import URLRequired
 API_KEY = #Put your unique API key here#
-CHANNEL_ID = #Put channel Id of the channel whoose info you want#
+CHANNEL_ID = #Put channel Id of the channel whose info you want#
 url = "https://www.googleapis.com/youtube/v3/search?key="+API_KEY+"&channelId="+CHANNEL_ID+"&part=snippet,id&order=date&maxResults=1000"
 response = requests.get(url).json()
 
