@@ -15,11 +15,11 @@ for video in response['items']:
     title = video['snippet']['title']
     date = video['snippet']['publishTime']
     date = str(date).split("T")[0]
-    url_video_stats = "https://www.googleapis.com/youtube/v3/videos?id="+id+"&part=statistics&key="+API_KEY
-    response_video_stats = requests.get(url_video_stats).json()
+    url_video = "https://www.googleapis.com/youtube/v3/videos?id="+id+"&part=statistics&key="+API_KEY
+    response_video = requests.get(url_video).json()
 
-    view_count = response_video_stats['items'][0]['statistics']['viewCount']
-    like_count = response_video_stats['items'][0]['statistics']['likeCount']
+    view_count = response_video['items'][0]['statistics']['viewCount']
+    like_count = response_video['items'][0]['statistics']['likeCount']
     comment_count = response_video_stats['items'][0]['statistics']['commentCount']
     
     df = df.append({'video_title':title,"upload_date":date,"views":view_count,"likes":like_count,"comments":comment_count},ignore_index=True)
