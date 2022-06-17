@@ -1,7 +1,5 @@
 import requests
-import pandas
 import pandas as pd
-import time
 
 rom requests.exceptions import URLRequired
 API_KEY = #Put your unique API key here#
