@@ -1,5 +1,6 @@
 import requests
 import pandas
+import pandas as pd
 import time
 
 rom requests.exceptions import URLRequired
@@ -7,6 +8,8 @@ API_KEY = #Put your unique API key here#
 CHANNEL_ID = #Put channel Id of the channel whoose info you want#
 url = "https://www.googleapis.com/youtube/v3/search?key="+API_KEY+"&channelId="+CHANNEL_ID+"&part=snippet,id&order=date&maxResults=1000"
 response = requests.get(url).json()
+
+df = pd.DataFrame(columns=["video_title","upload_date","views","likes","comments"])
 
 for video in response['items']:
   if video['id']['kind'] == "youtube#video":
@@ -20,10 +23,10 @@ for video in response['items']:
     view_count = response_video_stats['items'][0]['statistics']['viewCount']
     like_count = response_video_stats['items'][0]['statistics']['likeCount']
     comment_count = response_video_stats['items'][0]['statistics']['commentCount']
+    
+    df = df.append({'video_title':title,"upload_date":date,"views":view_count,"likes":like_count,"comments":comment_count},ignore_index=True)
+ 
+df = df.sort_values(by="views",ascending=False)
+    
 
-    print(date)
-    print(title)
-    print(view_count)
-    print(like_count)
-    print(comment_count)
-    print("\n")
+    
